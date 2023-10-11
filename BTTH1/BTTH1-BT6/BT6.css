@@ -1,0 +1,30 @@
+.container{
+    width: 50%;
+    height: 520px;
+    margin: 50px auto;
+    background-color: #FFEDCA;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-radius: 3px;
+    border-style: dotted;
+    border-color: rgb(73, 2, 2);
+    border-width: 1px;
+}
+h2{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color:#680f08;
+}
+table{
+    width: 90%;
+    border-collapse: collapse;
+}
+td{
+    height: 45px;
+}
+input{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    height: 20px;
+}

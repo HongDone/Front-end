@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu đăng ký</title>
+    <link rel="stylesheet" href="BT6.css">
+</head>
+<body>
+    <div class = "container">
+        <h2>Phiếu đăng ký tham gia dự thưởng</h2>
+        <table border = 1 align="center">
+            <tr>
+                <td style="width: 40%;">Họ và tên</td>
+                <td><input type="text" size = "30" maxlength="100" value = "Nguyễn Văn A"></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><input type="text" size = "45" maxlength="300" name="address" id="" value = "Ấp A, xã B, huyện C, tỉnh D"></td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td><input type="text" size="30" maxlength="11" value = "09xxxxxxxxx"></td>
+            </tr>
+                <td>Giới tính</td>
+                <td>
+                    <input type="radio" name = "sex" id = "male" value = "male"> Nam
+                    <input type="radio" name="sex" id="female" value = "female"> Nữ
+                </td>
+            </tr>
+            <tr style="height: 80px">
+                <td>Sản phẩm</td>
+                <td style="vertical-align: top;">
+                    <select id = "prizes">
+                        <option value="Iphone">Iphone 15 Pro Max</option>
+                        <option value="Samsung">Samsung Galaxy A52</option>
+                        <option value="Xiaomi">Xiaomi Redmi 50</option>
+                        <option value="Oppo">Oppo A73</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Số dự đoán</td>
+                <td><input style="width: 40%;" type="number" min = "1000" max = "9999" name="" id=""></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" name="" id="" value = "Đăng ký">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

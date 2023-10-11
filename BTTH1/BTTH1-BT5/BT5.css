@@ -1,0 +1,34 @@
+.container{
+    width: 40%;
+    height: 320px;
+    margin: 100px auto;
+    background-color: rgb(186, 214, 205);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12pt;
+}
+h2{
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    color: #050c6d;
+    text-align: center;
+}
+hr{
+    width: 100%;
+    height: 2px;
+    background-color: #0000FF;
+}
+table{
+    width: 100%;
+    height: 200px;
+    border-collapse: collapse;
+}
+#login{
+    width: 100px;
+    height: 25px;
+    border-radius: 12px;
+}
+#button{
+    width: 120px;
+    height: 30px;
+}

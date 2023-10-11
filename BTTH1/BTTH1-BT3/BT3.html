@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caculator</title>
+    <link rel="stylesheet" href="BT3.css">
+</head>
+<body>
+    <div class = container>
+        <h3>Caculator</h3>
+        <form action="" name = "cacl">
+            <h4 id = "value">Value 1</h4>
+            <input id = "input" name = "input1"  oninput="validateDecimalInput(this)" size = "30" maxlength = "100" type="text">
+            <br>
+            <br>
+            <h4 id = "value">Value 2</h4>
+            <input id = "input" name= "input2" oninput="validateDecimalInput(this)" size = "30" maxlength = "100" type="text">
+            <ul class = "calculation">
+                <li>
+                    <input type="button" onclick = "Plus(cacl)" name = "plus" value = "Plus"> 
+                <li>
+                    <input type="button" onclick = "Substract(cacl)" name="substract" value = "Substract" id="">
+                </li>
+                <li>
+                    <input type="button" onclick = "Multiply(cacl)" name ="multiply" value = "Multiply">
+                </li>
+                <li>
+                    <input type="button" onclick ="Divide(cacl)" name="divide" value = "Divide" id="">
+                </li>
+            </ul>
+            <h4 id = "value">Result</h4>
+            <span id = "result" style="padding-left : 40px;"></span>
+            <script>
+                function Plus(cacl){
+                    const value1 = cacl.input1.value;
+                    const value2 = cacl.input2.value;
+                    result.innerHTML = parseFloat(value1) + parseFloat(value2);
+                }
+                function Substract(cacl){
+                    const value1 = cacl.input1.value;
+                    const value2 = cacl.input2.value;
+                    result.innerHTML = parseFloat(value1) - parseFloat(value2);
+                }  
+                function Multiply(cacl){
+                    const value1 = cacl.input1.value;
+                    const value2 = cacl.input2.value;
+                    result.innerHTML = parseFloat(value1) * parseFloat(value2);
+                }  
+                function Divide(cacl){
+                    const value1 = cacl.input1.value;
+                    const value2 = cacl.input2.value;
+                    result.innerHTML = parseFloat(value1) / parseFloat(value2);
+                }  
+                function validateDecimalInput(inputElement){
+                    const inputValue = inputElement.value;
+                    const decimalPattern = /^[0-9]+(\.[0-9]*)?$/;
+                    if (!decimalPattern.test(inputValue)) {
+                      inputElement.value = inputValue.slice(0, -1);
+                    }
+                }
+            </script>
+        </form>
+    </div>
+</body>
+</html>
