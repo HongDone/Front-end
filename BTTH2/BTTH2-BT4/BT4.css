@@ -1,0 +1,28 @@
+#buy-ticket{
+    width: 45%;
+    border-collapse: collapse;
+    height: 60vh;
+    margin: 20px auto;
+    font-size: 15pt;
+}
+#buy-ticket  tr{
+    height: 8vh;
+}
+#buy-ticket  tr  td{
+    padding-left: 10px;
+}
+.select-field{
+    width: 60%;
+    height: 30px;
+    cursor: pointer;;
+}
+#create-ticket{
+    height: 70%;
+    width: 100px;
+    cursor: pointer;
+    border-color: blue;
+    background-color: rgb(214, 214, 246);
+}
+#create-ticket{
+    background-color: rgb(155, 155, 248);
+}

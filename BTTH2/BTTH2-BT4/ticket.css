@@ -1,0 +1,36 @@
+.container{
+    width: 35%;
+    height: 90vh;
+    border: 2px solid black;
+    margin: 30px auto;
+    font-size: 15pt;
+}
+.title{
+    text-align: center;
+    font-weight: bold;
+}
+#infor-field{
+    width: 90%;
+    border-collapse: collapse;
+    height: 40%;
+    margin: 30px auto;
+    font-size: 15pt;
+}
+#infor-field  tr{
+    height: 20%;
+}
+#infor-field tr  td{
+    width: 50%;
+    padding-left: 10px;
+}
+#price-field{
+    width: 70%;
+    border-collapse: collapse;
+}
+#price-field  tr{
+    height: 30px;
+}
+#price-field  tr  td{
+    width: 50%;
+    text-align: center;
+}

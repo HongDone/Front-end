@@ -1,0 +1,71 @@
+
+.control{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14pt;
+} 
+#table-container1{
+    width: 60%;
+}
+#table-container1  table  td{
+    height: 40px;
+    color: blue
+}
+
+#price-list{
+    width: 37%;
+}
+#price-list  table  tr{
+    height:40px;
+}
+#price-list tr  td{
+    padding-left: 10px;
+}
+#table, #menu-item{
+    position: absolute;
+    width: 60%;
+    height: 20px;
+    margin-left: 20%;
+    margin-top: -50px;
+}
+#select  tr  th{
+    color: #CCCC99;
+    background-color: #0033CC;
+}
+.general-receipt{
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.general-receipt  div{
+    width: 30%;
+}
+.general-receipt  div  table  th{
+    height: 40px;
+}
+.sub-table{
+    width: 98%;
+    margin-left: 1%;
+    height: 80%;
+}
+.sub-table  tr{
+    height: 45px;
+}
+.sub-table  tr  td{
+    padding-left: 10px;
+}
+.print-receipt, #add-button{
+    height: 30px;
+    text-align: center;
+    margin: 10px;
+    margin-left: 145px;
+    cursor: pointer;
+    background-color: #b2c0eb;
+}

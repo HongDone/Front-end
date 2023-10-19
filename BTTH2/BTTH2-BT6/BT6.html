@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+    <link rel="stylesheet" href="BT6.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <div class = "container">
+        <h3>Phiếu đăng ký tour du lịch</h3>
+        <table id = "register-form" align="center" border="1">
+            <tr>
+                <td style="width: 40%;">Họ và tên nhân viên</td>
+                <td><input type="text" id = "emp-name" size = "30" maxlength="100" value = "Nguyễn Văn A"></td>
+            </tr>
+            <tr>
+                <td style="width: 40%;">Họ và tên khách</td>
+                <td><input type="text" id = "cus-name" size = "30" maxlength="100" value = "Nguyễn Văn B"></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><input type="text" id = "address" size = "30" maxlength="100" value = "abc, xyz, jqk"></td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td><input type="text" id = "phone-number" size = "11" maxlength="11" value = "09xxxxxxxx"></td>
+            </tr>
+            <tr>
+                <td>Tour</td>
+                <td>
+                    <select name="tours" id="select-tour">
+                        <option value="default" selected>Chọn tour</option>
+                        <option value="10000000">Hà Nội – Hạ Long – Tuần Châu</option>
+                        <option value="6000000">Hà Nội – Sapa</option>
+                        <option value="3000000">Đà Nẵng – Hội An</option>
+                        <option value="2000000">Buôn Mê Thuộc – Kon Tum</option>
+                        <option value="3500000">TP.HCM – Nha Trang</option>
+                        <option value="2500000">TP.HCM – Cần Thơ – Cà Mau</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="height: 25%;">
+                    <fieldset style="height: 60%;">
+                        <legend>Số lượng đoàn khách</legend>
+                        Người lớn<input type="number" id = "adult-counter" value = "1" min = 0>
+                        Trẻ em <input type="number" id = "children-counter" value = "0" min = 0>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr style="height: 25%;">
+                <td>Ghi chú</td>
+                <td><textarea name="note" id="note" cols="5" rows="5" style="width: 98%; height: 90%;"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><button id = "register-button">Đăng ký</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('#register-button').click(function(event){
+                var selectValue = document.getElementById("select-tour").value;
+                if (selectValue === "default") {
+                    alert("Bạn chưa chọn tour!");
+                    event.preventDefault(); 
+                }
+                else{
+                    var newTab = window.open('register.html', '_blank');
+                    newTab.addEventListener('load', function () {
+                        $(newTab.document).find('#emp-name').text($('#emp-name').val());
+                        $(newTab.document).find('#cus-name').text($('#cus-name').val());
+                        $(newTab.document).find('#address').text($('#address').val());
+                        $(newTab.document).find('#note').text($('#note').val());
+                        //thêm tên nv, tên khách, địa chỉ, ghi chú vào bill
+                        selectedTour = $('#select-tour  option:selected');
+                        $(newTab.document).find('#tour').text(selectedTour.text());
+                        //Thêm tên tour vào
+                        tourPrice = parseInt(selectedTour.val());  
+                        //giá tour                   
+                        var childrenUnitPrice = tourPrice / 2;
+                        var adultUnitPrice = tourPrice;
+                        //giá vé trẻ em và người lớn
+                        var numberOfChildren = $('#children-counter').val();
+                        var numberOfAdult = $('#adult-counter').val();
+                        //số lượng trẻ em và người lớn
+                        var childrenTotalPrice = childrenUnitPrice * numberOfChildren;
+                        var adultTotalPrice = adultUnitPrice * numberOfAdult;
+                        //tổng giá vé cho trẻ em và người lớn
+                        var totalPrice = childrenTotalPrice + adultTotalPrice;
+                        //tổng giá vé tour = người lớn + trẻ em
+                        if (childrenTotalPrice > 0) {
+                            var newRow = $('<tr>');
+                                newRow.append('Trẻ em');
+                                newRow.append($('<td>').text(numberOfChildren));
+                                newRow.append($('<td>').text(childrenUnitPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")));
+                                newRow.append($('<td>').text(childrenTotalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")));
+                            $(newTab.document).find('#bill  tr:last').before(newRow);
+                        }
+                        //Thêm trẻ em vào nếu số lượng > 0
+                        if (adultTotalPrice > 0) {
+                            var newRow = $('<tr>');
+                                newRow.append('Người lớn');
+                                newRow.append($('<td>').text(numberOfAdult));
+                                newRow.append($('<td>').text(adultUnitPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")));
+                                newRow.append($('<td>').text(adultTotalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")));
+                            $(newTab.document).find('#bill  tr:last').before(newRow);
+                        }
+                        //Thêm người lớn vào nếu số lượng > 0
+                        $(newTab.document).find('#total-price').text(totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                        //Thêm tổng giá vào bill
+                })      
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema</title>
+    <link rel="stylesheet" href="BT4.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<!-- giá trị hiện trong form là giá trị có thể thay đổi -->
+<table id = "buy-ticket" border = 1>
+    <tr>
+        <th colspan="2" style="text-align: center; font-weight: bold;"> Mua vé</th>
+    </tr>
+    <tr>
+        <td style="width: 40%;">Tên khách hàng</td> 
+        <td><input type="text" value = "Nguyễn Hồng Đoan" id = "customer-name" style="width: 90%; height: 20px;" size = "100" maxlength="100" value=""></td>
+    </tr> 
+    <tr>
+        <td style="width: 40%;">Ngày chiếu</td>
+        <td><input type="date"  name="date" id="date-input" min="" style="cursor: pointer;"></td>
+    </tr>
+    <tr>
+        <td>Phim</td>
+        <td> 
+            <select name="movie" id="movie-select" class = "select-field">
+                <option value="movie1">Yêu em bất chấp</option>
+                <option value="movie2">Tháng năm rực rỡ</option>
+                <option value="movie3">Và em sẽ đến</option>
+                <option value="movie4">Chuyện ma lúc 3 giờ sáng</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Suất chiếu</td>
+        <td>
+            <select name="showtime" id="showtime-select" class = "select-field">
+                <option value="45000">09h-12h</option>
+                <option value="45000">13h-16h</option>
+                <option value="55000">17h-20h</option>
+                <option value="35000">22h-02h</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Phòng chiếu</td>
+        <td>
+            <select name="room" id="room-select" class = "select-field">
+                <option value="1.0">Đồng</option>
+                <option value="1.2">Vàng</option>
+                <option value="1.5">Bạc</option>
+                <option value="2.0">Kim Cương</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 120px;">Chọn chỗ ngồi</td>
+        <td>
+            <select name="seat" id="seat-select" size='5' multiple style="width: 60%; cursor: pointer;">
+                <option value="seat1">Ghế 01</option>
+                <option value="seat2">Ghế 02</option>
+                <option value="seat3">Ghế 03</option>
+                <option value="seat4">Ghế 04</option>
+                <option value="seat5">Ghế 05</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center;">
+            <button id = "create-ticket">Mua vé</button>
+        </td>
+    </tr>
+</table>  
+<script>
+    var today = new Date();
+    var formattedToday = today.toISOString().split('T')[0];
+    var dateInput = document.getElementById('date-input');
+    dateInput.min = formattedToday;
+    dateInput.value = formattedToday;
+    $(document).ready(function(){
+        $('#create-ticket').click(function(){
+            var newTab = window.open('ticket.html', '_blank');
+            newTab.addEventListener('load', function(){
+                customerName = $(document).find('#customer-name').val();
+                showDate = $(document).find('#date-input').val()
+                selectedMovie = $('#movie-select  option:selected');
+                selectedShowtime = $('#showtime-select   option:selected');
+                console.log(selectedShowtime.text())
+                selectedRoom = $('#room-select   option:selected');
+                $(newTab.document).find('#customer-name').text(customerName);//gan ten cua khach hang vao hoa don
+                $(newTab.document).find('#date').text(showDate); //gan ngay chieu phim vao hoa don
+                $(newTab.document).find('#movie').text(selectedMovie.text()); //gan ten phim vao hoa don
+                $(newTab.document).find('#showtime').text(selectedShowtime.text());
+                $(newTab.document).find('#room').text(selectedRoom.text());
+                priceField = $(newTab.document).find('#price-field'); //chọn chỗ tính tiền vé
+                totalPrice = 0;
+                $( '#seat-select option:selected').each(function(){
+                    newRow = $('<tr>');
+                    newRow.append($('<td>').append($(this).text()));
+                    price = parseFloat(selectedShowtime.val())*parseFloat(selectedRoom.val());
+                    //tiền bằng value của seat * value của phòng, thêm parseFloat để chuyển string thành float mới nhân được
+                    newRow.append($('<td>').append(price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") +'đ'));
+                    newRow.insertBefore(priceField.find('tr:last'))//gắn vào trước dòng total price
+                    totalPrice += price;
+                })
+                priceField.find('#total-price').text(totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") +'đ'); //gắn tổng tiền vào ô tổng tiền
+            })
+            //đoạn toString().replace... là để chèn dấu chấm vào chỗ tiền, bỏ ra cũng được luôn
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+body{
+    display: flex;
+    justify-content: space-around;
+}
+.order{
+    width: 55%;
+    height: 80vh;
+    background-color: #F1F1F2;
+    border-radius: 3px;
+}
+.order  table{
+    border-collapse: collapse;
+    width: 95%;
+    margin-top: 5px;
+    border-color: rgb(1, 57, 1);
+    border-width: 1.5px;
+}
+.order  table  tr{
+    height: 50px;
+    color: rgb(18, 1, 1);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13pt;
+}
+.order  table  tr td{
+    width: 25%;
+    padding-left: 25px;
+}
+button{
+    height: 35px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: #486824;
+    color: #F1F1F2;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13pt;
+    font-weight: bold;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #3f6710;
+}
+.price_list{
+    border-radius: 3px;
+    width: 44%;
+    background-color: #486824;
+}
+.price_list  h2, h3{
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace
+}
+.price_list  table{
+    border-collapse: collapse;
+    width: 95%;
+    margin-top: 35px;
+    border-color: rgb(1, 57, 1);
+    border-width: 1.5px;
+}
+.price_list  table  tr{
+    height: 40px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13pt;
+}
+.price_list  table  tr  td{
+    width: 25%;
+    padding-left: 5px;
+}
+#title{
+    font-weight: bold;
+}
+#name{
+    font-style: italic;
+}
+#table_container{
+    height: 200px;
+}
+#reset{
+    margin-top: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    height: 27px;
+    width: 80px;
+    border-radius: 3px;
+}
+.selectbox{
+    height: 170px;
+    width: 160px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14pt;
+    background-color: rgb(213, 238, 219);
+}
+.selectbox:hover{
+    cursor: pointer;
+}
+.custom_hover{
+    cursor: pointer;
+}

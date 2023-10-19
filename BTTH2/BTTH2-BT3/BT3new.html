@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charge</title>
+    <link rel="stylesheet" href="BT3.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <div class = "control">
+        <div id = "table-container1">
+            <table border = 1>
+                <tr>
+                    <td style="width: 65%; font-weight: bold;">
+                        <span id = "time"></span>
+                    </td>
+                    <td>
+                        Nhân viên: 
+                        <span id = "employee-name">Nguyễn Văn A</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h3 style="text-align: center; color: black;">THỰC ĐƠN</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="height: 200px;" align="center">
+                        <table border = 1 style="margin: 40px; width: 50%;" id = "select">
+                            <tr style="height: 50px;">
+                                <th style="width: 45%;">Bàn</th>
+                                <th>Món ăn</th>
+                            </tr>
+                            <tr style="height: 200px; ">
+                                <td style="position: relative;">
+                                    <select name="table" id="table" class = "selectbox" >
+                                        <option value="default">Chọn bàn</option>
+                                        <option value="table1">Bàn 1</option>
+                                        <option value="table2">Bàn 2</option>
+                                        <option value="table3">Bàn 3</option>
+                                    </select>
+                                </td>
+                                <td style="position: relative;">
+                                    <select name="dishes" id="menu-item" class = "selectbox" >
+                                        <option value="default">Chọn món ăn</option>
+                                        <option value="20000">Bún bò</option>
+                                        <option value="18000">Hủ tiếu</option>
+                                        <option value="17000">Bánh canh</option>
+                                        <option value="19000">Phở Bò</option>
+                                        <option value="15000">Nui</option>
+                                        <option value="12000">Bánh mì thịt</option>
+                                        <option value="15000">Bánh cuốn</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <button id = 'add-button' style="margin-left: -10px; margin-bottom: 25px; margin-top: -5px;">Thêm vào</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id = "price-list">
+            <table border=1>
+                <tr>
+                    <th>Món</th>
+                    <th>Tiền</th>
+                </tr>
+                <tr>
+                    <td>Bún bò</td>
+                    <td>20.000đ</td>
+                </tr>
+                <tr>
+                    <td>Hủ tiếu</td>
+                    <td>18.000đ</td>
+                </tr>
+                <tr>
+                    <td>Bánh canh</td>
+                    <td>17.000đ</td>
+                </tr>
+                <tr>
+                    <td>Phở bò</td>
+                    <td>19.000đ</td>
+                </tr>
+                <tr>
+                    <td>Nui</td>
+                    <td>15.000đ</td>
+                </tr>
+                <tr>
+                    <td>Bánh mì thịt</td>
+                    <td>12.000đ</td>
+                </tr>
+                <tr>
+                    <td>Bánh cuốn</td>
+                    <td>15.000đ</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class = "general-receipt">
+        <div id = "table-container">
+            <table id = "table1" value = "1" class = "my-table" border = "1">
+                <th class = "table-number">Bàn 1</th>
+                <tr>
+                    <td> 
+                        <table border = "1" class = "sub-table" id = "subtable1">
+                            <th style="width: 30%;">Món</th>
+                            <th style="width: 20%;">SL</th>
+                            <th style="width: 30%;">Tiền</th>
+                            <th style="width: 20%;" class = "delete-button"></th>
+                            <tr style="font-weight: bold;">
+                                <td>Tổng tiền</td>
+                                <td colspan="3" value="0" class = "total-price">0</td>
+                            </tr>
+                        </table>
+                        <button class = "print-receipt">In hóa đơn</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id = "table-container">
+            <table id = "table2" value = "2" class = "my-table" border = "1">
+                <th class = "table-number">Bàn 2</th>
+                <tr>
+                    <td> 
+                        <table border = "1" class = "sub-table" id = "subtable2">
+                            <th style="width: 30%;">Món</th>
+                            <th style="width: 20%;">SL</th>
+                            <th style="width: 30%;">Tiền</th>
+                            <th style="width: 20%;" class = "delete-button"></th>
+                            <tr style="font-weight: bold;">
+                                <td>Tổng tiền</td>
+                                <td colspan="3" class = "total-price">0</td>
+                            </tr>
+                        </table>
+                        <button class = "print-receipt">In hóa đơn</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id = "table-container">
+            <table id = "table3" value = "3" class = "my-table" border = "1">
+                <th class = "table-number">Bàn 3</th>
+                <tr>
+                    <td> 
+                        <table border = "1" class = "sub-table" id = "subtable3">
+                            <th style="width: 30%;">Món</th>
+                            <th style="width: 20%;">SL</th>
+                            <th style="width: 30%;">Tiền</th>
+                            <th style="width: 20%;" class = "delete-button"></th>
+                            <tr style="font-weight: bold;">
+                                <td>Tổng tiền</td>
+                                <td colspan="3" value="0" class = "total-price">0</td>
+                            </tr>
+                        </table>
+                        <button class = "print-receipt">In hóa đơn</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function formatTime(date){
+            const days = ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+            const day = days[date.getDay()];
+            const year = date.getFullYear();
+            const month = (date.getMonth()+1).toString().padStart(2, '0');
+            const dayOfMonth = date.getDate().toString().padStart(2,'0');
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${day}, ${dayOfMonth}/${month}/${year}, ${hours}:${minutes}`;
+        }
+        function updateTime(){
+            const time = formatTime(new Date());
+            document.getElementById('time').textContent = time;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+        $(document).ready(function(){
+            $('#add-button').click(function(event){
+                var selectTable = $(document).find('#table').val();
+                var selectItem = $(document).find('#menu-item').val();
+                if (selectTable === "default" || selectItem === "default") {
+                    alert("Bạn chưa chọn bàn và món ăn");
+                    event.preventDefault(); 
+                }
+                else {  
+                    selectedDish = $('#menu-item  option:selected');
+                    dishPrice = parseInt(selectedDish.val());
+                    dishName = selectedDish.text()
+                    selectedTable = $('#table option:selected');
+                    selectedSubTableID = $('#sub' + selectedTable.val()).attr('id');
+                    selectedSubTable = $('#' + selectedSubTableID);
+                    var existedValue = selectedSubTable.find('td:contains("' + dishName + '")');
+                    currentTotalPrice = parseInt(selectedSubTable.find('.total-price').text());
+                    if (existedValue.length){
+                        existedRow = existedValue.closest('tr');
+                        currentQuantity = parseInt(existedRow.find('.quantity').text());
+                        newQuantity = currentQuantity + 1;
+                        newPrice = newQuantity*dishPrice;
+                        newTotalPrice = currentTotalPrice + dishPrice;
+                        existedRow.find('.quantity').text(newQuantity);
+                        existedRow.find('.price').text(newPrice);
+                        selectedSubTable.find('.total-price').text(newTotalPrice);
+                    }
+                    else{
+                        newRow = $('<tr>');
+                            newRow.append($('<td>').append(dishName));
+                            newRow.append($('<td>').append('1').addClass('quantity'));
+                            newRow.append($('<td>').append(dishPrice).addClass('price'));
+                            deleteButton = $('<button>').text("Xóa").css("cursor", "pointer").addClass('delete-button');
+                                deleteButton.click(function () {
+                                    currentTotalPrice = parseInt(selectedSubTable.find('.total-price').text());
+                                    deletedRow = $(this).closest('tr');
+                                    deletedPrice = parseInt(deletedRow.children('.price').text());
+                                    newTotalPrice = currentTotalPrice - deletedPrice;
+                                    selectedSubTable.find('.total-price').text(newTotalPrice);
+                                    deletedRow.remove();
+                    })   
+                        newRow.append($('<td>').append(deleteButton));
+                        $('#' + selectedSubTableID + ' tr:last').before(newRow);
+                        selectedSubTable.find('.total-price').text(currentTotalPrice + dishPrice);                  
+                    }  
+                            
+                }
+            })
+            $('.print-receipt').click(function(){
+            table = $(this).closest('table');
+            var clonedTable = (table.find('.sub-table')).clone();
+            clonedTable.attr({'id': 'clonedTable', 'border' : '0'});
+            clonedTable.css('border-collapse', 'collapse');
+            clonedTable.find('.delete-button').remove();
+            clonedTable.find('#total-price').attr('colspan', '2');
+            var tableValue = table.attr('value');
+            var newTab = window.open('receipt.html', '_blank');
+            newTab.addEventListener('load', function() {
+            $(newTab.document).find('#time').text($(document).find('#time').text());
+            $(newTab.document).find('#employee-name').text($(document).find('#employee-name').text());
+            $(newTab.document).find('#table').text('Số '+ tableValue);
+            $(newTab.document).find('#table-container').append(clonedTable);
+                });
+            })
+        })
+    </script>
+<body>
+</html>

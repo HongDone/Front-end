@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="BT2.CSS">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class = "order">
+        <table border = "1" align = "center">
+            <tr>
+                <td colspan="3" style="text-align: center; font-weight: bold; font-size: 20pt;">Menu</td>
+            </tr>
+            <tr style="text-align: center; font-weight: bold;">
+                <td>Food</td>
+                <td>Beverage</td>
+                <td>Time</td>
+            </tr>
+            <tr style="height: 300px;">
+                <td align="center">
+                    <form action="">
+                        <select name="dish" id = "food" class = "selectbox" multiple>
+                            <option value = "20000">Bun Bo</option>
+                            <option value = "18000">Hu Tieu</option>
+                            <option value = "17000">Banh Canh</option>
+                            <option value = "19000">Pho Bo</option>
+                            <option value = "15000">Nuoi</option>
+                            <option value = "12000">Banh Mi Thit</option>
+                            <option value = "15000">Banh Cuon</option>
+                        </select>
+                        <input type="reset" value = "Reset" id = "reset">
+                    </form>
+                </td>
+                <td align="center">
+                    <form action="">
+                        <select name="dish" id="beverage" class = "selectbox" multiple>
+                            <option value = "12000">Ca Phe Da</option>
+                            <option value = "15000">Ca Phe Sua</option>
+                            <option value = "13000">Chanh Day</option>
+                            <option value = "12000">Chanh Muoi</option>
+                            <option value = "14000">Xi Muoi</option>
+                            <option value = "13000">Sua Tuoi</option>
+                            <option value = "17000">Cam Vat</option>
+                           </select>
+                           <input type="reset" value = "Reset" id = "reset">
+                    </form>
+                </td>
+                <td>
+                    <input type="radio" name = "time" id = "day"> Day
+                    <br>
+                    <br>
+                    <input type="radio" name = "time" id = "night"> Night
+                </td>
+            </tr>
+            <tr>
+                <td colspan = "3" style="text-align: center;">
+                    <button id = "cacl">Calculate</button>
+                </td>
+            </tr>
+        </table>
+        <h2 style="font-family: 'Courier New', Courier, monospace; font-size: 13pt; margin-left: 15px;">Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</h2>
+        <div id = table_container style="margin-left: 30px;">
+            <table border = 1 id = "ordered">
+                <tr>
+                    <th style="width: 50%;">Selected Dished</th>
+                    <th style="width: 50%;">Cost</th>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">Total Cost</td>
+                    <td id = "total-price" style="font-weight: bold;">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class = "price_list">
+        <h2>Price List</h2>
+        <table border = "1" align="center">
+            <tr id = "title">
+                <td>Food</td>
+                <td>Price</td>
+                <td>Beverage</td>
+                <td>Price</td>
+            </tr>
+            <tr>
+                <td id = "name">Bun Bo</td>
+                <td>20.000</td>
+                <td id = "name">Ca Phe Da</td>
+                <td>12.000</td>
+            </tr>
+            <tr>
+                <td id = "name">Hu Tieu</td>
+                <td>18.000</td>
+                <td id = "name">Ca Phe Sua</td>
+                <td>15.000</td>
+            </tr>
+            <tr>
+                <td id = "name">Banh Canh</td>
+                <td>17.000</td>
+                <td id = "name">Chanh Day</td>
+                <td>13.000</td>
+            </tr>
+            <tr>
+                <td id = "name">Pho Bo</td>
+                <td>19.000</td>
+                <td id = "name">Chanh Muoi</td>
+                <td>12.000</td>
+            </tr>
+            <tr>
+                <td id = "name">Nuoi</td>
+                <td>15.000</td>
+                <td id = "name">Xi Muoi</td>
+                <td>14.000</td>
+            </tr>
+            <tr>
+                <td id = "name">Banh Mi Thit</td>
+                <td>12.000</td>
+                <td id = "name">Sua Tuoi</td>
+                <td>13.000</td>
+            </tr>
+            <tr>
+                <td id = "name">Banh Cuon</td>
+                <td>15.000</td>
+                <td id = "name">Cam Vat</td>
+                <td>17.000</td>
+            </tr>
+        </table>
+        <h3 style= "text-align: left; margin-left: 20px;">Currency: vnđ</h3>
+    </div>
+    <script> 
+            $(document).ready(function(){
+            input = $("input");
+            input.addClass("custom_hover");
+            var totalPrice = 0;
+            $("#cacl").click(function(){ //function chạy khi click nút calculate
+                $( '.selectbox option:selected').each(function(){
+                    newRow = $('<tr>');
+                        newRow.append($('<td>').append($(this).text()));
+                        newRow.append($('<td>').append($(this).val()));
+                    $('#ordered tr:last').before(newRow); //gắn vào trước dòng total price
+                    totalPrice += parseFloat($(this).val());
+                })
+                isNightTime = $("input[id = 'night']");
+                if (isNightTime.is(":checked")) {
+                    totalPrice += totalPrice * (10 / 100);
+                } //ban đêm thì giá tăng 10%
+                $(document).find('#total-price').text(totalPrice);  //gắn giá trị vào Total price      
+            })
+            })     
+    </script>
+</body>
+</html>

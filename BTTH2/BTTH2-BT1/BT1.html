@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="BT1.css">
+</head>
+<body>
+    <table border = "1">
+        <tr>
+            <td style="width: 30%;">Lương</td>
+            <td>
+                <input type="number" name = "salary" id="salary" min = 0>
+            </td>
+        </tr>
+        <tr>
+            <td>Hệ số lương</td>
+            <td>
+                <input type="number" step = "0.1" min = "0.1" name = "coefficients"  id="coefficients">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button type="submit" name="cacl_month_salary" id="cacl_month_salary" onclick="salary_cacl()">Tính lương tháng</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Lương tháng</td>
+            <td>
+                <span id = "month_salary"></span>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function salary_cacl(){
+        var salary = document.querySelector('#salary');
+        var coefficients = document.querySelector('#coefficients');
+        month_salary.innerHTML = parseFloat(salary.value)*parseFloat(coefficients.value);
+        }
+    </script>
+</body>
+</html>

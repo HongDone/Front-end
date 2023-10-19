@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+     <div class = "container">
+        <h3>Thông tin đăng ký</h3>
+        <table border = 0 align="center" id = "registed-infor" class = "my-table">
+            <tr>
+                <td style="width: 45%;">Ngày đăng ký</td>
+                <td id = "time"></td>
+            </tr>
+            <tr>
+                <td>Nhân viên</td>
+                <td id = 'emp-name'></td>
+            </tr>
+            <tr>
+                <td>Họ tên khách</td>
+                <td id = 'cus-name'></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td id = 'address'></td>
+            </tr>
+            <tr>
+                <td>Tour</td>
+                <td id = 'tour'></td>
+            </tr>
+            <tr>
+                <td>Ghi chú</td>
+                <td id = 'note'></td>
+            </tr>
+            <tr>
+                <td>Số lượng khách đoàn</td>
+                <td></td>
+            </tr>
+        </table>
+        <table id = "bill" class = "my-table" border = 0 align="center">
+            <tr>
+                <th></th>
+                <th>SL</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+            </tr>
+            <tr>
+                <th colspan="2">Tổng tiền</th>
+                <th colspan="2" id = 'total-price' data-price="0">0đ</th>
+            </tr>
+        </table>
+     </div>
+</body>
+<script>
+    function formatTime(date) {
+        const days = ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+        const day = days[date.getDay()];
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const dayOfMonth = date.getDate().toString().padStart(2, '0');
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+              return `${day}, ${dayOfMonth}/${month}/${year}, ${hours}:${minutes}`;
+        }
+                function updateTime() {
+                    const time = formatTime(new Date());
+                    document.getElementById('time').textContent = time;
+                }
+                updateTime();
+                setInterval(updateTime, 1000);
+</script>
+</html>

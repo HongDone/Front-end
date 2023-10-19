@@ -1,0 +1,42 @@
+.container{
+    background-color: #FFDD99;
+    width: 45%;
+    height: 88vh;
+    margin: 30px auto;
+}
+h3{
+    text-align: center;
+    padding-top: 20px;
+}
+#register-form{
+    border-collapse: collapse;
+    width: 90%;
+    height: 88%;
+    border-color: black;
+    color: blue;
+    font-size: 14pt;
+}
+#register-form  tr{
+    height: 8%;
+}
+#emp-name, #cus-name, #address, #phone-number, #select-tour{
+    height: 24px;
+    color: gray;
+}
+#emp-name, #cus-name, #phone-number, #select-tour{
+    width: 57%;
+}
+#select-tour{
+    color: black;
+}
+#address{
+    width: 90%;
+}
+#adult-counter, #children-counter{
+    width: 30%;
+    height: 20px;
+    margin-left: 10px;
+}
+#register-button{
+    cursor: pointer;
+}

@@ -1,0 +1,25 @@
+table{
+    width: 500px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-color: blue;
+    border-width: 3px;
+    background-color: rgb(246, 243, 239);
+}
+tr{
+    height: 40px;
+}
+td{
+    padding-left: 10px;
+}
+#cacl_month_salary{
+    text-align: center;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, blue, rgb(93, 199, 252));
+    color: #FFF;
+    height: 25px;
+}
+#cacl_month_salary:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, rgb(0, 42, 255), rgb(93, 199, 252));
+}

@@ -1,0 +1,32 @@
+#shopping-cart{
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #FFEDCA;
+    margin: 10vh auto;
+    font-weight: bold;
+}
+#shopping-cart  tr{
+    height: 8vh;
+}
+#shopping-cart  tr  td{
+    width: 20%;
+}
+.input-field{
+    width: 94%;
+    height: 70%;
+    margin-left: 1%;
+    font-size: 13pt;
+    font-family: 'Times New Roman', Times, serif;
+}
+.delete-button-container{
+    text-align: center;
+}
+.delete-button{
+    width: 40%;
+    height: 70%;
+    cursor: pointer;
+    border-radius: 12px;
+}
+.delete-button:hover{
+    background-color: #b2d2e9;
+}
